@@ -247,7 +247,7 @@ class modResourceCreateProcessor extends modObjectCreateProcessor {
             } else {
                 $scriptProperties['publishedon'] = strtotime($scriptProperties['publishedon']);
             }
-            $scriptProperties['publishedby'] = $scriptProperties['published'] ? $this->modx->user->get('id') : 0;
+            $scriptProperties['publishedby'] = $scriptProperties['published'] ? (!isset($scriptProperties['publishedby']) ? $this->modx->user->get('id') : $scriptProperties['publishedby']) : 0;
         }
         
         $this->setProperties($scriptProperties);
